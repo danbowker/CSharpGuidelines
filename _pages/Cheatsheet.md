@@ -47,7 +47,8 @@ NOTE: Requires Markdown Extra. See http://michelf.ca/projects/php-markdown/extra
 * A property, method or local function should do only one thing (AV1115)
 * Don't expose stateful objects through static members (AV1125)
 * Return an `IEnumerable<T>` or `ICollection<T>` instead of a concrete collection class (AV1130) 
-* Properties, arguments and return values representing strings or collections should never be `null` (AV1135)
+* Properties, arguments and return values representing collections should never be `null` (AV1135)
+* Properties, arguments and return values representing strings should never be `null` (AV1136)
 * Define parameters as specific as possible (AV1137)
 </td>
 <td class="column">
@@ -71,7 +72,6 @@ NOTE: Requires Markdown Extra. See http://michelf.ca/projects/php-markdown/extra
 * Make all members `private` and types `internal sealed` by default (AV1501)
 * Avoid conditions with double negatives (AV1502)
 * Don't use "magic" numbers (AV1515)
-* Only use `var` when the type is very obvious (AV1520)
 * Declare and initialize variables as late as possible (AV1521)
 * Assign each variable in a separate statement (AV1522)
 * Favor object and collection initializers over separate statements (AV1523)

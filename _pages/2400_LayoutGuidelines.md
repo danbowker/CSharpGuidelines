@@ -87,7 +87,8 @@ Maintaining a common order allows other team members to find their way in your c
 5. Constructors and the finalizer
 6. Events 
 7. Public properties
-8. Other methods and private properties in calling order
+8. Private properties
+8. Other methods
 
 Declare local functions at the bottom of their containing method bodies (after all executable code).
 

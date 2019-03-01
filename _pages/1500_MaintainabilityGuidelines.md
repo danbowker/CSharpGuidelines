@@ -86,23 +86,6 @@ If the value of one constant depends on the value of another, attempt to make th
 
 **Note:** An enumeration can often be used for certain types of symbolic constants.
 
-### <a name="av1520"></a> Only use `var` when the type is very obvious (AV1520) ![](/assets/images/1.png)
-Only use `var` as the result of a LINQ query, or if the type is very obvious from the same statement and using it would improve readability. So don't
-
-	var item = 3;                              // what type? int? uint? float?
-	var myfoo = MyFactoryMethod.Create("arg"); // Not obvious what base-class or			
-	                                           // interface to expect. Also
-	                                           // difficult to refactor if you can't
-	                                           // search for the class
-
-Instead, use `var` like this:
-
-	var query = from order in orders where order.Items > 10 and order.TotalValue > 1000;
-	var repository = new RepositoryFactory.Get();	
-	var list = new ReadOnlyCollection();
-
-In all of three above examples it is clear what type to expect. For a more detailed rationale about the advantages and disadvantages of using `var`, read Eric Lippert's [Uses and misuses of implicit typing](http://blogs.msdn.com/b/ericlippert/archive/2011/04/20/uses-and-misuses-of-implicit-typing.aspx).
-
 ### <a name="av1521"></a> Declare and initialize variables as late as possible (AV1521) ![](/assets/images/2.png)
 Avoid the C and Visual Basic styles where all variables have to be defined at the beginning of a block, but rather define and initialize each variable at the point where it is needed.
 
@@ -192,6 +175,8 @@ Please note that this also avoids possible confusion in statements of the form:
 			Bar();  
 		}  
 	}
+
+A `return` following an `if` is an exception; this is OK without a block.
 
 ### <a name="av1536"></a> Always add a `default` block after the last `case` in a `switch` statement (AV1536) ![](/assets/images/1.png)
 Add a descriptive comment if the `default` block is supposed to be empty. Moreover, if that block is not supposed to be reached throw an `InvalidOperationException` to detect future changes that may fall through the existing cases. This ensures better code, because all paths the code can travel have been thought about.
@@ -375,7 +360,7 @@ The only valid reason for using C# 4.0's optional arguments is to replace the ex
         return someText.IndexOf(phrase, startIndex, length);
     }
 
-If the optional parameter is a reference type then it can only have a default value of `null`. But since strings, lists and collections should never be `null` according to rule AV1135, you must use overloaded methods instead.
+If the optional parameter is a reference type then it can only have a default value of `null`. But since strings, lists and collections should never be `null` according to rules AV1135 and AV1136, you must use overloaded methods instead.
 
 **Note:** The default values of the optional parameters are stored at the caller side. As such, changing the default value without recompiling the calling code will not apply the new default value.
 
@@ -417,7 +402,7 @@ Often, a method taking such a bool is doing more than one thing and needs to be 
 ### <a name="av1568"></a> Don't use parameters as temporary variables (AV1568) ![](/assets/images/3.png)
 Never use a parameter as a convenient variable for storing temporary state. Even though the type of your temporary variable may be the same, the name usually does not reflect the purpose of the temporary variable.
 
-### <a name="av1570"></a> Prefer `is` patterns over `as` operations (AV1570) ![](/assets/images/1.png)
+### <a name="av1570"></a> (C# 7.0+) Prefer `is` patterns over `as` operations (AV1570) ![](/assets/images/1.png)
 
 If you use 'as' to safely upcast an interface reference to a certain type, always verify that the operation does not return `null`. Failure to do so may cause a `NullReferenceException` at a later stage if the object did not implement that interface.
 Pattern matching syntax prevents this and improves readability. For example, instead of:
