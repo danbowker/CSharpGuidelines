@@ -1,9 +1,5 @@
 # main links
 main:
-  - title: "The Continuous Improver"
-    url: https://www.continuousimprover.com
-  - title: "Aviva Solutions"
-    url: https://www.avivasolutions.nl
 
 sidebar:
   - title: Introduction

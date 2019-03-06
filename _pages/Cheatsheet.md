@@ -113,11 +113,6 @@ NOTE: Requires Markdown Extra. See http://michelf.ca/projects/php-markdown/extra
   Dennis Doomen
   Version %semver% (%commitdate%)
 </td>
-<td style="text-align:right">
-  [www.csharpcodingguidelines.com](http://www.csharpcodingguidelines.com)
-  [www.continuousimprover.com](www.continuousimprover.com)
-  [www.avivasolutions.nl](http://www.avivasolutions.nl)
-</td>
 </tr>
 </table>
 
